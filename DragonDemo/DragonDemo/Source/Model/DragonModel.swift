@@ -13,35 +13,35 @@ struct DragonModel {
     let name: String
     let frameRate: Int
     let version: String
-    let armatures: [Armature]
+    let armatures: [ArmatureData]
     
     init(_ json:JSON) {
         self.name = json["name"].stringValue
         self.frameRate = json["frameRate"].int ?? 24
         self.version = json["version"].stringValue
         let armaturesJson = json["armature"].arrayValue
-        self.armatures = armaturesJson.map { (json:JSON) -> Armature in
-                Armature(json)
+        self.armatures = armaturesJson.map { (json:JSON) -> ArmatureData in
+                ArmatureData(json)
         }
     }
 }
 
-struct Armature {
+struct ArmatureData {
     let name: String
-    let bones: [Bone]
-    let slots: [Slot]
-    
+    let bones: [BoneData]
+    let slots: [SlotData]
+    let animations:[Animation]
     init(_ json: JSON) {
         self.name = json["name"].stringValue
         let slotsJson = json["slot"].arrayValue
-        self.slots = slotsJson.map { (json:JSON) -> Slot in
-            Slot(json)
+        self.slots = slotsJson.map { (json:JSON) -> SlotData in
+            SlotData(json)
         }
         let skinJson = json["skin"].dictionaryValue
         let slotInSkinJson = skinJson["slot"]?.arrayValue ?? []
         for slotJson in slotInSkinJson {
             let name = slotJson["name"].stringValue
-            var targetSlot:Slot?
+            var targetSlot:SlotData?
             for slot in self.slots {
                 if (slot.name == name) {
                     targetSlot = slot
@@ -50,19 +50,24 @@ struct Armature {
             }
             if targetSlot != nil {
                 let displayArrayJson = slotJson["display"].arrayValue
-                targetSlot?.displays = displayArrayJson.map({ (json:JSON) -> Display in
-                    Display(json)
+                targetSlot?.displays = displayArrayJson.map({ (json:JSON) -> DisplayData in
+                    DisplayData(json)
                 })
             }
         }
         let bonesJson = json["bone"].arrayValue
-        self.bones = bonesJson.map({ (json:JSON) -> Bone in
-            Bone(json)
+        self.bones = bonesJson.map({ (json:JSON) -> BoneData in
+            BoneData(json)
         })
+        let animationJson = json["animation"].arrayValue
+        self.animations = animationJson.map({ (json:JSON) -> Animation in
+            Animation(json)
+        })
+        
     }
 }
 
-struct Bone {
+struct BoneData {
     let level:Int = 0
     let name:String
     let parent:String
@@ -76,12 +81,12 @@ struct Bone {
     }
 }
 
-struct Slot {
+struct SlotData {
     let name: String
     let parent: String
     let displayIndex: Int
     let zOrder: Int
-    var displays:[Display] = []
+    var displays:[DisplayData] = []
     init(name:String) {
         self.name = name
         self.parent = ""
@@ -98,7 +103,7 @@ struct Slot {
     }
 }
 
-struct Display {
+struct DisplayData {
     var transform: Transform
     var pivot: Point?
     let name: String

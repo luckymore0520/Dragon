@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122EBB811E7FEF1100388D8C /* DragonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122EBB801E7FEF1100388D8C /* DragonModel.swift */; };
+		122EBB831E7FF1F900388D8C /* AnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122EBB821E7FF1F900388D8C /* AnimationModel.swift */; };
 		1237D3131E7EB8A900835EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1237D3121E7EB8A900835EAB /* AppDelegate.swift */; };
 		1237D3151E7EB8A900835EAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1237D3141E7EB8A900835EAB /* ViewController.swift */; };
 		1237D3181E7EB8A900835EAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1237D3161E7EB8A900835EAB /* Main.storyboard */; };
@@ -32,11 +34,12 @@
 		1237D34C1E7EB8CF00835EAB /* tail.png in Resources */ = {isa = PBXBuildFile; fileRef = 1237D3391E7EB8CF00835EAB /* tail.png */; };
 		1237D34D1E7EB8CF00835EAB /* tailTip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1237D33A1E7EB8CF00835EAB /* tailTip.png */; };
 		1237D3501E7EB91000835EAB /* DragonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1237D34F1E7EB91000835EAB /* DragonAnimationView.swift */; };
-		1237D3521E7EBF3A00835EAB /* DragonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1237D3511E7EBF3A00835EAB /* DragonModel.swift */; };
 		EBC66AF84BD824C005C2761C /* Pods_DragonDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F53DF879FF75363C77C2EF0D /* Pods_DragonDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		122EBB801E7FEF1100388D8C /* DragonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DragonModel.swift; path = Source/Model/DragonModel.swift; sourceTree = "<group>"; };
+		122EBB821E7FF1F900388D8C /* AnimationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationModel.swift; path = Source/Model/AnimationModel.swift; sourceTree = "<group>"; };
 		1237D30F1E7EB8A900835EAB /* DragonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1237D3121E7EB8A900835EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1237D3141E7EB8A900835EAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +67,6 @@
 		1237D3391E7EB8CF00835EAB /* tail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tail.png; sourceTree = "<group>"; };
 		1237D33A1E7EB8CF00835EAB /* tailTip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tailTip.png; sourceTree = "<group>"; };
 		1237D34F1E7EB91000835EAB /* DragonAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DragonAnimationView.swift; path = Source/DragonAnimationView.swift; sourceTree = "<group>"; };
-		1237D3511E7EBF3A00835EAB /* DragonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DragonModel.swift; path = Source/DragonModel.swift; sourceTree = "<group>"; };
 		497B0A88898F058CC45600EB /* Pods-DragonDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragonDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DragonDemo/Pods-DragonDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		5C633718D8AD3B15F4511915 /* Pods-DragonDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragonDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DragonDemo/Pods-DragonDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F53DF879FF75363C77C2EF0D /* Pods_DragonDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DragonDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,15 @@
 				5C633718D8AD3B15F4511915 /* Pods-DragonDemo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		122EBB7F1E7FEEF500388D8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				122EBB801E7FEF1100388D8C /* DragonModel.swift */,
+				122EBB821E7FF1F900388D8C /* AnimationModel.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		1237D3061E7EB8A900835EAB = {
@@ -169,8 +180,8 @@
 		1237D34E1E7EB8E000835EAB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				122EBB7F1E7FEEF500388D8C /* Model */,
 				1237D34F1E7EB91000835EAB /* DragonAnimationView.swift */,
-				1237D3511E7EBF3A00835EAB /* DragonModel.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -325,10 +336,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122EBB811E7FEF1100388D8C /* DragonModel.swift in Sources */,
 				1237D3151E7EB8A900835EAB /* ViewController.swift in Sources */,
-				1237D3521E7EBF3A00835EAB /* DragonModel.swift in Sources */,
 				1237D3131E7EB8A900835EAB /* AppDelegate.swift in Sources */,
 				1237D3501E7EB91000835EAB /* DragonAnimationView.swift in Sources */,
+				122EBB831E7FF1F900388D8C /* AnimationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +502,7 @@
 				1237D3231E7EB8A900835EAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
