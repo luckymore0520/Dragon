@@ -35,12 +35,13 @@ struct Animation {
 
 }
 
+//A timeline correspond to the animation of a bone or a slot
+//just like the timeline when designing the animation
+//A Timeline has many key frames which decide the whole animation
 struct Timeline {
     let name:String
     var duration:Int = 0
     var frames:[Frame] = []
-    
-    
     init?(_ json:JSON) {
         let framesJson = json["frame"].arrayValue
         if (framesJson.isEmpty) {
@@ -54,6 +55,7 @@ struct Timeline {
         self.name = json["name"].stringValue
     }
 }
+
 
 struct Frame {
     let duration:Int
@@ -70,4 +72,64 @@ struct Frame {
         self.displayIndex = json["displayIndex"].int ?? 0
         self.alpha = (json["color"]["aM"].float ?? 100.0) * 0.01
     }
+}
+
+struct Transform {
+    let x: CGFloat
+    let y: CGFloat
+    let skewX: CGFloat
+    let skewY: CGFloat
+    let scaleX: CGFloat
+    let scaleY: CGFloat
+    
+    init() {
+        self.x = 0
+        self.y = 0
+        self.skewX = 0
+        self.skewY = 0
+        self.scaleX = 0
+        self.scaleY = 0
+    }
+    
+    
+    init(_ json:JSON) {
+        self.x = CGFloat(json["x"].float ?? 0)
+        self.y = CGFloat(json["y"].float ?? 0)
+        self.scaleX = CGFloat(json["scX"].float ?? 1)
+        self.scaleY = CGFloat(json["scY"].float ?? 1)
+        self.skewX = CGFloat((json["skX"].float ?? 0) / 180.0 * Float(M_PI))
+        self.skewY = CGFloat((json["skY"].float ?? 0) / 180.0 * Float(M_PI))
+    }
+}
+
+extension CGAffineTransform {
+ 
+
+    init(withTransform transform:Transform) {
+        self.a = transform.scaleX * cos(transform.skewY)
+        self.b = transform.scaleX * sin(transform.skewY)
+        self.c = -transform.scaleY * sin(transform.skewX)
+        self.d = transform.scaleY * cos(transform.skewX)
+        self.tx = transform.x
+        self.ty = transform.y
+    }
+
+   
+    init(withMatrix first:CGAffineTransform, contactWith another:CGAffineTransform) {
+        if (another.a != 1 || another.b != 0 || another.c != 0 || another.d != 1) {
+            self.a = first.a * another.a + first.b * another.c
+            self.b = first.a * another.b + first.b * another.d
+            self.c = first.c * another.a + first.d * another.c
+            self.d = first.c * another.b + first.d * another.d
+        } else {
+            self.a = first.a
+            self.b = first.b
+            self.c = first.c
+            self.d = first.d
+        }
+        self.tx = first.tx * another.a + first.ty * another.c + another.tx
+        self.ty = first.tx * another.b + first.ty * another.d + another.ty
+    }
+
+
 }

@@ -9,6 +9,9 @@
 import Foundation
 import SwiftyJSON
 
+
+//A DragonModel present the whole json which is loaded
+//It has several different armatures
 struct DragonModel {
     let name: String
     let frameRate: Int
@@ -26,6 +29,7 @@ struct DragonModel {
     }
 }
 
+//An ArmatureData have bones,slots and some animations
 struct ArmatureData {
     let name: String
     let bones: [BoneData]
@@ -105,7 +109,6 @@ struct SlotData {
 
 struct DisplayData {
     var transform: Transform
-    var pivot: Point?
     let name: String
     
     init(_ json:JSON) {
@@ -114,24 +117,9 @@ struct DisplayData {
     }
 }
 
-struct Transform {
-    let x: Float
-    let y: Float
-    let skewX: Float
-    let skewY: Float
-    let scaleX: Float
-    let scaleY: Float
-    
-    init(_ json:JSON) {
-        self.x = json["x"].float ?? 0
-        self.y = json["y"].float ?? 0
-        self.scaleX = json["scX"].float ?? 1
-        self.scaleY = json["scY"].float ?? 1
-        self.skewX = (json["skX"].float ?? 0) / 180.0 * Float(M_PI)
-        self.skewY = (json["skY"].float ?? 0) / 180.0 * Float(M_PI)
-    }
-}
+
 
 struct Point {
-    
+    let x: Float
+    let y: Float
 }

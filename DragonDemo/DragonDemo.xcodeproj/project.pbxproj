@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12144F1A1E82CE4F003863E4 /* ArmatureLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12144F191E82CE4F003863E4 /* ArmatureLayer.swift */; };
+		12144F1C1E82CE92003863E4 /* Bones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12144F1B1E82CE92003863E4 /* Bones.swift */; };
+		12144F1E1E82D1F8003863E4 /* SlotLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12144F1D1E82D1F8003863E4 /* SlotLayer.swift */; };
+		12144F201E82D2A4003863E4 /* DisplayLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12144F1F1E82D2A4003863E4 /* DisplayLayer.swift */; };
 		122EBB811E7FEF1100388D8C /* DragonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122EBB801E7FEF1100388D8C /* DragonModel.swift */; };
 		122EBB831E7FF1F900388D8C /* AnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122EBB821E7FF1F900388D8C /* AnimationModel.swift */; };
 		1237D3131E7EB8A900835EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1237D3121E7EB8A900835EAB /* AppDelegate.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12144F191E82CE4F003863E4 /* ArmatureLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArmatureLayer.swift; path = Source/Layer/ArmatureLayer.swift; sourceTree = "<group>"; };
+		12144F1B1E82CE92003863E4 /* Bones.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bones.swift; path = Source/Layer/Bones.swift; sourceTree = "<group>"; };
+		12144F1D1E82D1F8003863E4 /* SlotLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlotLayer.swift; path = Source/Layer/SlotLayer.swift; sourceTree = "<group>"; };
+		12144F1F1E82D2A4003863E4 /* DisplayLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayLayer.swift; path = Source/Layer/DisplayLayer.swift; sourceTree = "<group>"; };
 		122EBB801E7FEF1100388D8C /* DragonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DragonModel.swift; path = Source/Model/DragonModel.swift; sourceTree = "<group>"; };
 		122EBB821E7FF1F900388D8C /* AnimationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationModel.swift; path = Source/Model/AnimationModel.swift; sourceTree = "<group>"; };
 		1237D30F1E7EB8A900835EAB /* DragonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +99,17 @@
 				5C633718D8AD3B15F4511915 /* Pods-DragonDemo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		12144F181E82CDBC003863E4 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				12144F191E82CE4F003863E4 /* ArmatureLayer.swift */,
+				12144F1B1E82CE92003863E4 /* Bones.swift */,
+				12144F1D1E82D1F8003863E4 /* SlotLayer.swift */,
+				12144F1F1E82D2A4003863E4 /* DisplayLayer.swift */,
+			);
+			name = Layer;
 			sourceTree = "<group>";
 		};
 		122EBB7F1E7FEEF500388D8C /* Model */ = {
@@ -180,6 +199,7 @@
 		1237D34E1E7EB8E000835EAB /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				12144F181E82CDBC003863E4 /* Layer */,
 				122EBB7F1E7FEEF500388D8C /* Model */,
 				1237D34F1E7EB91000835EAB /* DragonAnimationView.swift */,
 			);
@@ -337,9 +357,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				122EBB811E7FEF1100388D8C /* DragonModel.swift in Sources */,
+				12144F1E1E82D1F8003863E4 /* SlotLayer.swift in Sources */,
 				1237D3151E7EB8A900835EAB /* ViewController.swift in Sources */,
 				1237D3131E7EB8A900835EAB /* AppDelegate.swift in Sources */,
+				12144F1C1E82CE92003863E4 /* Bones.swift in Sources */,
 				1237D3501E7EB91000835EAB /* DragonAnimationView.swift in Sources */,
+				12144F1A1E82CE4F003863E4 /* ArmatureLayer.swift in Sources */,
+				12144F201E82D2A4003863E4 /* DisplayLayer.swift in Sources */,
 				122EBB831E7FF1F900388D8C /* AnimationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

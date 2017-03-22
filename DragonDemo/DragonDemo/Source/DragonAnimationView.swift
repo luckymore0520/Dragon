@@ -32,7 +32,4 @@ class DragonAnimationView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
-    
-    
-
 }
