@@ -82,13 +82,23 @@ struct Transform {
     let scaleX: CGFloat
     let scaleY: CGFloat
     
+    init(x:CGFloat,y:CGFloat,skewX:CGFloat,skewY:CGFloat,scaleX:CGFloat,scaleY:CGFloat) {
+        self.x = x;
+        self.y = y;
+        self.skewX = skewX;
+        self.skewY = skewY;
+        self.scaleX = scaleX;
+        self.scaleY = scaleY;
+    }
+    
+    
     init() {
         self.x = 0
         self.y = 0
         self.skewX = 0
         self.skewY = 0
-        self.scaleX = 0
-        self.scaleY = 0
+        self.scaleX = 1.0
+        self.scaleY = 1.0
     }
     
     

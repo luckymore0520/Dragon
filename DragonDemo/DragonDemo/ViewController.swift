@@ -9,11 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var animationView:DragonAnimationView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let animationView = DragonAnimationView(withName: "Dragon_ske")
-        print("..")
+        if let animationView = DragonAnimationView(withName: "Dragon_ske", frame:self.view.bounds) {
+            self.view.addSubview(animationView)
+            self.animationView = animationView
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 

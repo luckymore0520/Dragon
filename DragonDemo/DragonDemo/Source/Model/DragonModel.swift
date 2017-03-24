@@ -33,7 +33,7 @@ struct DragonModel {
 struct ArmatureData {
     let name: String
     let bones: [BoneData]
-    let slots: [SlotData]
+    var slots: [SlotData]
     let animations:[Animation]
     init(_ json: JSON) {
         self.name = json["name"].stringValue
@@ -41,23 +41,28 @@ struct ArmatureData {
         self.slots = slotsJson.map { (json:JSON) -> SlotData in
             SlotData(json)
         }
-        let skinJson = json["skin"].dictionaryValue
-        let slotInSkinJson = skinJson["slot"]?.arrayValue ?? []
-        for slotJson in slotInSkinJson {
-            let name = slotJson["name"].stringValue
-            var targetSlot:SlotData?
-            for slot in self.slots {
-                if (slot.name == name) {
-                    targetSlot = slot
-                    break
+        let skinJsonArray = json["skin"].arrayValue
+        for skinJson in skinJsonArray {
+            let slotInSkinJson = skinJson["slot"].arrayValue
+            for slotJson in slotInSkinJson {
+                let name = slotJson["name"].stringValue
+                
+                
+                for i in 0...self.slots.count {
+                    let slot = self.slots[i]
+                    if (slot.name == name) {
+                        let displayArrayJson = slotJson["display"].arrayValue
+                        var targetSlot = slot;
+                        targetSlot.displays = displayArrayJson.map({ (json:JSON) -> DisplayData in
+                            DisplayData(json)
+                        })
+                        self.slots[i] = targetSlot;
+                        break
+                    }
                 }
+               
             }
-            if targetSlot != nil {
-                let displayArrayJson = slotJson["display"].arrayValue
-                targetSlot?.displays = displayArrayJson.map({ (json:JSON) -> DisplayData in
-                    DisplayData(json)
-                })
-            }
+
         }
         let bonesJson = json["bone"].arrayValue
         self.bones = bonesJson.map({ (json:JSON) -> BoneData in
@@ -117,9 +122,3 @@ struct DisplayData {
     }
 }
 
-
-
-struct Point {
-    let x: Float
-    let y: Float
-}

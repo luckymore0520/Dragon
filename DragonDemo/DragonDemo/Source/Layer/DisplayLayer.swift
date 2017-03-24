@@ -14,10 +14,10 @@ class DisplayLayer: CALayer {
     init(_ data:DisplayData) {
         self.data = data
         super.init()
-        let imagePath = data.name + ".png"
+        let imagePath = data.name.components(separatedBy: "/").last ?? "" + ".png"
         let image = UIImage(named: imagePath)
         self.bounds = CGRect(x: 0, y: 0, width: image?.size.width ?? 0, height: image?.size.height ?? 0)
-        self.contents = image?.ciImage
+        self.contents = image?.cgImage
     }
     
     required init?(coder aDecoder: NSCoder) {

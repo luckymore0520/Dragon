@@ -27,4 +27,28 @@ class Bone {
         self.origin = data.transform
         self.tween = Transform()
     }
+    
+    func updateBones() {
+        if (self.updateSemaphore > 0) {
+            self.updateSemaphore -= 1
+        }
+        if (self.updateSemaphore <= 0) {
+            return
+        }
+        
+        let transform = Transform(x: self.origin.x + self.tween.x,
+                                  y: self.origin.y + self.tween.y,
+                                  skewX: self.origin.skewX + self.tween.skewX,
+                                  skewY: self.origin.skewY + self.tween.skewY,
+                                  scaleX: self.origin.scaleX * self.tween.scaleX,
+                                  scaleY: self.origin.scaleY * self.tween.scaleY)
+        let matrix = CGAffineTransform(withTransform: transform)
+        if let parent = self.parent, let parentMatrix = parent.matrix {
+            self.matrix = CGAffineTransform(withMatrix: matrix, contactWith: parentMatrix)
+        } else {
+            self.matrix = matrix
+        }
+    }
+    
+
 }

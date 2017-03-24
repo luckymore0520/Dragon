@@ -37,12 +37,17 @@ class SlotLayer: CALayer {
             return
         }
         self.displayIndex = index
+        
         self.displayNode?.removeFromSuperlayer()
         if (index >= 0 && index < self.displayLayers.count) {
             let displayNode = self.displayLayers[index]
             let displayData = displayNode.data
             self.origin = displayData.transform
+            
             self.addSublayer(displayNode)
+            
+            
+            
             self.displayNode = displayNode
             self.updateLayer()
         }
@@ -63,8 +68,11 @@ class SlotLayer: CALayer {
         var transform = matrix
         transform.tx = 0
         transform.ty = 0
+        
+        
         displayNode.setAffineTransform(transform)
         displayNode.position = CGPoint(x: matrix.tx, y: matrix.ty)
+        
     }
     
     

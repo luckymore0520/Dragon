@@ -12,7 +12,8 @@ import SwiftyJSON
 
 class DragonAnimationView: UIView {
     let model:DragonModel
-    init?(withName armatureName:String, inBundle bundle:Bundle) {
+    var armatureLayer:ArmatureLayer?
+    init?(withName armatureName:String, inBundle bundle:Bundle, frame:CGRect) {
         guard let path = bundle.path(forResource: armatureName, ofType: "json") else {
             return nil
         }
@@ -21,12 +22,18 @@ class DragonAnimationView: UIView {
         }
         let json = JSON(data: jsonData)
         self.model = DragonModel(json)
-        super.init(frame: CGRect.zero)
+        super.init(frame: frame)
+        if let armatureData = self.model.armatures.first {
+            let armatureLayer = ArmatureLayer(armatureData)
+            self.armatureLayer = armatureLayer
+            armatureLayer.frame = self.bounds;
+            self.layer.addSublayer(armatureLayer)
+        }
     }
     
     
-    convenience init?(withName armatureName:String) {
-        self.init(withName:armatureName, inBundle:Bundle.main)
+    convenience init?(withName armatureName:String, frame:CGRect = CGRect.zero) {
+        self.init(withName:armatureName, inBundle:Bundle.main, frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
